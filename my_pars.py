@@ -1,36 +1,43 @@
+from configure import *
 import requests
 import bs4
-
-
-def fixed_url(url):
-    return url
-
 
 def valid_url(url):
     return True
 
 
 def main():
+    print(hello_word)
 
-    url = input()
-    url = fixed_url(url)
-    if not valid_url(url):
+    ans = int(input())
+
+    if ans == 0:
+        exit("Для поддержки программой нового сайта попробуйте написать разработчику\n"
+             "на электронную почту can.do.attitute@gmail.com и ожидайте обновления на GitHub.")
+    elif ans < 0 or ans > item_count:
+        exit("Некорректный ввод!")
+
+    url = input()               # Вводим URL
+    url = ''.join(url.split())  # Избавляемся от неожиданных пробелов в данном пользователем URL
+    if not valid_url(url):      # Проверяем, можем ли мы получить доступ к ссылке, а так же корректно ли она написана
         exit("Невозможно получить информацию с данного URL")
 
     html_doc = requests.get(url).content.decode('utf-8')
-    soup = bs4.BeautifulSoup( html_doc, 'html.parser')
-    table = soup.find('div', class_='b-topic__content');
-    for row in table.find_all('h1'):
-        for item in row.find_all('a'):
-            item = item.text
+    soup = bs4.BeautifulSoup(html_doc, 'html.parser')
 
-    for row in table.find_all('p'):
-        for item in row.find_all('a'):
-            item = item.text
-    for row in table.find_all('h1'):
-        print(row.text)
-    for row in table.find_all('p'):
-        print(row.text)
+    all_content = config[ans]
+    tag, where = all_content["where"]
+    content = all_content["text"]
+    table = soup.find(tag, class_=where)
+
+    for temp in content:
+        for row in table.find_all(temp):
+            for item in row.find_all('a'):
+                item = item.text
+
+    for temp in content:
+        for row in table.find_all(temp):
+            print(row.text)
 
 
 if __name__ == '__main__':
