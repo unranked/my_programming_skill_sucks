@@ -2,6 +2,7 @@ from configure import *
 import requests
 import bs4
 
+
 def valid_url(url):
     return True
 
@@ -22,10 +23,11 @@ def main():
     if not valid_url(url):      # Проверяем, можем ли мы получить доступ к ссылке, а так же корректно ли она написана
         exit("Невозможно получить информацию с данного URL")
 
-    html_doc = requests.get(url).content.decode('utf-8')
+    all_content = config[ans]
+
+    html_doc = requests.get(url).content.decode(all_content["encoding"])
     soup = bs4.BeautifulSoup(html_doc, 'html.parser')
 
-    all_content = config[ans]
     tag, where = all_content["where"]
     content = all_content["text"]
     table = soup.find(tag, class_=where)
@@ -35,9 +37,11 @@ def main():
             for item in row.find_all('a'):
                 item = item.text
 
+    raw_text = []
+
     for temp in content:
         for row in table.find_all(temp):
-            print(row.text)
+            raw_text.append(row.text)
 
 
 if __name__ == '__main__':
