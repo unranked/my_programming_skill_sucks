@@ -1,2 +1,2 @@
-# my_programming_skill_sucks
-i did
+# Задача C++|Python – Mini readability
+
