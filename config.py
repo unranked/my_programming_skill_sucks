@@ -40,7 +40,7 @@ hello_word = "---***---***---***---***---***---***---***---***---***---\n" \
 config = [
     'NOTHING',
     {
-        "where": "b-topic__content",    # elem 1
+        "where": ("div", "b-topic__content"),    # elem 1
         "text": ["h1", "p"]
     }, {
         "where": "b-topic__content",    # elem 2
