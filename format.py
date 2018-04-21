@@ -1,0 +1,2 @@
+class formater(string):
+    pass
