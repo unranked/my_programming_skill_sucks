@@ -2,6 +2,9 @@ from configure import *
 import requests
 import bs4
 
+def is_valid(sth):
+    return True
+
 def main():
     print(hello_word)
 
