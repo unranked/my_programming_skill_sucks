@@ -40,22 +40,28 @@ hello_word = "---***---***---***---***---***---***---***---***---***---\n" \
 config = [
     'NOTHING',
     {
-        "where": ("div", "b-topic__content"),    # elem 1
-        "text": ["h1", "p"]
+        "where": ("div", "b-topic__content"),                   # elem 1
+        "text": ["h1", "p"],
+        "encoding": "utf-8"
     }, {
-        "where": "b-topic__content",    # elem 2
-        "text": ["h1", "p"]
+        "where": ("article", "main_article b-article"),         # elem 2
+        "text": ["h2", "h1", "p"],
+        "encoding": "cp1251"
     }, {
-        "where": "b-topic__content",    # elem 3
-        "text": ["h1", "p"]
+        "where": ("div", "b-article__ind"),                     # elem 3
+        "text": ["h1", "p"],
+        "encoding": "utf-8"
     }, {
-        "where": "b-topic__content",    # elem 4
-        "text": ["h1", "p"]
+        "where": ("div", "news-record copyright-insert"),       # elem 4
+        "text": ["h1", "p"],
+        "encoding": "cp1251"
     }, {
-        "where": "b-topic__content",    # elem 5
-        "text": ["h1", "p"]
+        "where": ("div", "article"),                            # elem 5
+        "text": ["h3", "p"],
+        "encoding": "utf-8"
     }, {
-        "where": "b-topic__content",    # elem 6
-        "text": ["h1", "p"]
+        "where": ("div", "_content"),                           # elem 6
+        "text": ["h1", "p"],
+        "encoding": "utf-8"
     }
 ]
