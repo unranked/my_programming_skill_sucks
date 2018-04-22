@@ -1,0 +1,9 @@
+bs4
+beautifulsoup4
+certifi
+chardet
+idna
+pytz
+requests
+setuptools
+urllib3
