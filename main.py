@@ -25,8 +25,9 @@ def main():
     file_name = input("Назовите имя файла с информацией.\n")
         
     settings = config[ans]                  # Достаём настройки для i'ого новостного сервиса
-
-    html_doc = requests.get(url).content.decode(settings["encoding"])
+    
+    encode = requests.get(url).encoding     # Достаём кодировку прямо с серва, еее
+    html_doc = requests.get(url).content.decode(encode)
     soup = bs4.BeautifulSoup(html_doc, 'html.parser')
 
     tag, where = settings["where"]
