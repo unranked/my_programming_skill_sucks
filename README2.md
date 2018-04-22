@@ -1,6 +1,6 @@
 # Установка
 Перед запуском скрипта:
-        pip install -r requirements.txt
+                                pip install -r requirements.txt
 
 # Как это работает?
     Как-то.
