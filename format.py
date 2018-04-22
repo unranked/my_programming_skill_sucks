@@ -16,7 +16,7 @@ class Format:
                     string = string + word + " "
                 else:
                     text.append(string)
-                    string = word
+                    string = word + " "
             text.append(string)
             string = ""
             text.append(string)
