@@ -1,4 +1,4 @@
-from configure import *
+from cfg import *
 import requests
 import bs4
 
