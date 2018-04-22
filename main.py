@@ -1,5 +1,5 @@
 from cfg import *
-from better_looking import Format
+from look_better import Format
 import requests
 import bs4
 
