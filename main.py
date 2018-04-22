@@ -1,6 +1,10 @@
 from cfg import *
+from format import Format
 import requests
 import bs4
+
+def is_valid(url):
+    return True
 
 def main():
     print(hello_word)
@@ -33,10 +37,17 @@ def main():
                 item = item.text            # Это можно исправить прямо в этой строчке, да..
 
     raw_text = []
-    
+
     for temp in content:
         for row in table.find_all(temp):
             raw_text.append(row.text)
+
+    sth = Format(raw_text, width)
+
+    good_text = sth.done()
+    
+    for a in good_text:
+        print(a)
 
     
 
