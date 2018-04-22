@@ -2,9 +2,6 @@ from configure import *
 import requests
 import bs4
 
-def is_valid(sth):
-    return True
-
 def main():
     print(hello_word)
 
@@ -18,13 +15,13 @@ def main():
 
     url = input()                           # Вводим URL
     url = ''.join(url.split())              # Избавляемся от неожиданных пробелов в данном пользователем URL
-    if not is_valid(url):                   # Проверяем, можем ли мы получить доступ к ссылке, а также корректно ли она написана
+    if not is_valid(url):                   # Проверяем, можем ли мы получить доступ к ссылке, а так же корректно ли она написана
         exit("Невозможно получить информацию с данного URL")
 
     settings = config[ans]                  # Достаём настройки для i'ого новостного сервиса
 
-    html_doc = requests.get(url).content.decode(settings["encoding"])   # Получаю html-код из ссылки
-    soup = bs4.BeautifulSoup(html_doc, 'html.parser')                   # Преобразую в элемент типа BS
+    html_doc = requests.get(url).content.decode(settings["encoding"])
+    soup = bs4.BeautifulSoup(html_doc, 'html.parser')
 
     tag, where = settings["where"]
     content = settings["text"]
@@ -33,7 +30,7 @@ def main():
     for temp in content:                    # Обработка ссылок:
         for row in table.find_all(temp):    # На данном этапе разработки ссылки мы просто удаляем,
             for item in row.find_all('a'):  # оставляя просто текст.
-                item = item.text            # Но это можно быстро исправить..
+                item = item.text            # Это можно исправить прямо в этой строчке, да..
 
     raw_text = []
     
