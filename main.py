@@ -21,7 +21,9 @@ def main():
     url = ''.join(url.split())              # Избавляемся от неожиданных пробелов в данном пользователем URL
     if not is_valid(url):                   # Проверяем, можем ли мы получить доступ к ссылке, а так же корректно ли она написана
         exit("Невозможно получить информацию с данного URL")
-
+    
+    file_name = input("Назовите имя файла с информацией.\n")
+        
     settings = config[ans]                  # Достаём настройки для i'ого новостного сервиса
 
     html_doc = requests.get(url).content.decode(settings["encoding"])
@@ -45,11 +47,11 @@ def main():
     sth = Format(raw_text, width)
 
     good_text = sth.done()
-    
-    for a in good_text:
-        print(a)
 
-    
+    my_file = open(file_name + ".txt", "w")
+    for s in good_text:
+        my_file.write(s + "\n")
+
 
 if __name__ == '__main__':
     main()
