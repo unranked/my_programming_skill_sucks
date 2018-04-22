@@ -17,14 +17,15 @@ def main():
     elif ans < 0 or ans > item_count:
         exit("Некорректный ввод!")
 
-    url = input()                           # Вводим URL
+    url = input()                           
     url = ''.join(url.split())              # Избавляемся от неожиданных пробелов в данном пользователем URL
+    
     if not is_valid(url):                   # Проверяем, можем ли мы получить доступ к ссылке, а так же корректно ли она написана
         exit("Невозможно получить информацию с данного URL")
     
     file_name = input("Назовите имя файла с информацией.\n")
         
-    settings = config[ans]                  # Достаём настройки для i'ого новостного сервиса
+    settings = config[ans]                  # Достаём настройки для ans'ого новостного сервиса
     
     encode = requests.get(url).encoding     # Достаём кодировку прямо с серва, еее
     html_doc = requests.get(url).content.decode(encode)
